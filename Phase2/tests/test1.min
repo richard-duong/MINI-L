@@ -1,0 +1,11 @@
+function test;
+beginparams
+endparams
+beginlocals
+  a2n : integer;
+endlocals
+beginbody 
+  read a2n;
+  write a2n;
+  return test();  
+endbody

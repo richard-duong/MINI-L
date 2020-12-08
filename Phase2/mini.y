@@ -31,11 +31,22 @@ int yyerror(const char* msg){
 %token <num> NUM
 %token <iden> IDEN
 
-%left MULT DIV MOD ADD SUB
-%left LT LTE GT GTE EQ NEQ
-%right NOT
-%left AND OR
+/*
+  Ten levels of precedence
+  Reverse order of highest precedence
+*/
+
 %right ASSIGN
+%left OR
+%left AND
+%right NOT
+%left LT LTE GT GTE EQ NEQ
+%left ADD SUB
+%left MULT DIV MOD
+%right UMINUS
+%left L_BRACK R_BRACK
+%left L_PAREN R_PAREN
+
 
 %%
 
@@ -139,25 +150,19 @@ comp:             EQ { printf("comp -> EQ\n"); }
                   | GTE { printf("comp -> GTE\n"); }
                   ;
 
-exp:              mult_exp mult_cycle { printf("exp -> mult_exp mult_cycle\n"); }
+exp:              mult_exp {printf("exp ->mult_exp\n"); }
+                  | exp ADD mult_exp
+                  | exp SUB mult_exp
                   ;
 
-mult_cycle:       // epsilon { printf("mult_cycle -> epsilon\n"); }
-                  | ADD mult_exp mult_cycle { printf("mult_cycle -> ADD mult_exp mult_cycle\n"); }
-                  | SUB mult_exp mult_cycle { printf("mult_cycle -> SUB mult_exp mult_cycle\n"); }
-                  ;
-
-mult_exp:         term term_cycle{ printf("mult_exp -> term term_cycle\n"); }
-                  ;
-
-term_cycle:       // epsilon { printf("term_cycle -> epsilon\n"); }
-                  | MULT term term_cycle { printf("term_cycle -> MULT term term_cycle\n"); }
-                  | DIV term term_cycle { printf("term_cycle -> DIV term term_cycle\n"); }
-                  | MOD term term_cycle { printf("term_cycle -> MOD term term_cycle\n"); }
+mult_exp:         term
+                  | mult_exp MULT term
+                  | mult_exp DIV term
+                  | mult_exp MOD term
                   ;
 
 term:             term_base { printf("term -> term_base\n"); }
-                  | SUB term_base { printf("term -> SUB term_base\n"); }
+                  | SUB term_base %prec UMINUS { printf("term -> SUB term_base \%prec UMINUS\n"); }
                   | IDEN L_PAREN param_cycle R_PAREN { printf("term -> IDEN %s L_PAREN param_cycle R_PAREN\n", $1); }
                   ;
 

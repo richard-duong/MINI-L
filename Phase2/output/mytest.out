@@ -1,0 +1,422 @@
+iden_cycle -> IDEN n
+decl -> iden_cycle COLON arr_cycle INTEGER
+decl_cycle -> decl_cycle decl SEMICOLON
+iden_cycle -> IDEN i
+iden_cycle -> iden_cycle COMMA IDEN j
+iden_cycle -> iden_cycle COMMA IDEN k
+decl -> iden_cycle COLON arr_cycle INTEGER
+decl_cycle -> decl_cycle decl SEMICOLON
+iden_cycle -> IDEN t
+arr_cycle -> ARRAY L_BRACK NUM 20 R_BRACK OF
+decl -> iden_cycle COLON arr_cycle INTEGER
+decl_cycle -> decl_cycle decl SEMICOLON
+var -> IDEN i
+var_cycle -> var
+var -> IDEN j
+var_cycle -> var_cycle COMMA var
+read_cycle -> READ var_cycle
+stmt -> read_cycle
+stmt_cycle -> stmt SEMICOLON
+var -> IDEN k
+term_base -> NUM 0
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN n
+term_base -> NUM 20
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt SEMICOLON
+var -> IDEN k
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+term_base -> NUM 1
+term -> term_base
+mult_exp -> term term_cycle
+mult_cycle -> ADD mult_exp mult_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+term_base -> var
+term -> term_base
+term_base -> NUM 2
+term -> term_base
+term_cycle -> MOD term term_cycle
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> EQ
+term_base -> NUM 0
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+bool_exp -> rel_and_exp
+continue_cycle -> CONTINUE
+stmt -> continue_cycle
+stmt_cycle -> stmt SEMICOLON
+if_cycle -> IF bool_exp THEN stmt_cycle else_cycle ENDIF
+stmt -> if_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+term_base -> NUM 1
+term -> term_base
+mult_exp -> term term_cycle
+mult_cycle -> SUB mult_exp mult_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var_cycle -> var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> LT
+var -> IDEN n
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+bool_exp -> rel_and_exp
+do_cycle -> DO BEGINLOOP stmt_cycle ENDLOOP WHILE bool_exp
+stmt -> do_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> LT
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> LT
+var -> IDEN n
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_and_exp AND rel_exp
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> GTE
+term_base -> NUM 0
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_and_exp AND rel_exp
+bool_exp -> rel_and_exp
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var -> IDEN i
+term_base -> var
+term -> term_base
+term_base -> NUM 2
+term -> term_base
+term_cycle -> MULT term term_cycle
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt SEMICOLON
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var -> IDEN j
+term_base -> var
+term -> term_base
+term_base -> NUM 2
+term -> term_base
+term_cycle -> MULT term term_cycle
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> GTE
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+bool_exp -> rel_and_exp
+rel_exp_base -> FALSE
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+bool_exp -> bool_exp OR rel_and_exp
+var -> IDEN k
+term_base -> NUM 1
+term -> term_base
+mult_exp -> term term_cycle
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+mult_cycle -> SUB mult_exp mult_cycle
+mult_cycle -> ADD mult_exp mult_cycle
+exp -> mult_exp mult_cycle
+term_base -> L_PAREN exp R_PAREN
+term -> term_base
+term_base -> NUM 3
+term -> term_base
+term_cycle -> MOD term term_cycle
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt SEMICOLON
+var -> IDEN i
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+term_base -> NUM 1
+term -> term_base
+mult_exp -> term term_cycle
+mult_cycle -> SUB mult_exp mult_cycle
+exp -> mult_exp mult_cycle
+assign_cycle -> var ASSIGN exp
+stmt -> assign_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> GT
+term_base -> NUM 1
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+bool_exp -> rel_and_exp
+continue_cycle -> CONTINUE
+stmt -> continue_cycle
+stmt_cycle -> stmt SEMICOLON
+if_cycle -> IF bool_exp THEN stmt_cycle else_cycle ENDIF
+stmt -> if_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN k
+var_cycle -> var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+while_cycle -> WHILE bool_exp BEGINLOOP stmt_cycle ENDLOOP
+stmt -> while_cycle
+stmt_cycle -> stmt SEMICOLON
+else_cycle -> ELSE stmt_cycle
+if_cycle -> IF bool_exp THEN stmt_cycle else_cycle ENDIF
+stmt -> if_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN i
+var_cycle -> var
+var -> IDEN j
+var_cycle -> var_cycle COMMA var
+var -> IDEN k
+var_cycle -> var_cycle COMMA var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> LT
+var -> IDEN n
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> GTE
+term_base -> NUM 0
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_and_exp AND rel_exp
+bool_exp -> rel_and_exp
+var -> IDEN i
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var_cycle -> var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt SEMICOLON
+if_cycle -> IF bool_exp THEN stmt_cycle else_cycle ENDIF
+stmt -> if_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> LT
+var -> IDEN n
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_exp
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+comp -> GTE
+term_base -> NUM 0
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+rel_exp_base -> exp comp exp
+rel_exp -> rel_exp_base
+rel_and_exp -> rel_and_exp AND rel_exp
+bool_exp -> rel_and_exp
+var -> IDEN j
+term_base -> var
+term -> term_base
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+var -> IDEN t L_BRACK exp R_BRACK
+var_cycle -> var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt SEMICOLON
+if_cycle -> IF bool_exp THEN stmt_cycle else_cycle ENDIF
+stmt -> if_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+func_cycle -> func_cycle FUNCTION IDEN main SEMICOLON BEGINPARAMS decl_cycle ENDPARAMS BEGINLOCALS decl_cycle ENDLOCALS BEGINBODY stmt_cycle ENDBODY
+prog -> func_cycle

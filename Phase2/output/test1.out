@@ -1,0 +1,21 @@
+iden_cycle -> IDEN a2n
+decl -> iden_cycle COLON arr_cycle INTEGER
+decl_cycle -> decl_cycle decl SEMICOLON
+var -> IDEN a2n
+var_cycle -> var
+read_cycle -> READ var_cycle
+stmt -> read_cycle
+stmt_cycle -> stmt SEMICOLON
+var -> IDEN a2n
+var_cycle -> var
+write_cycle -> WRITE var_cycle
+stmt -> write_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+term -> IDEN test L_PAREN param_cycle R_PAREN
+mult_exp -> term term_cycle
+exp -> mult_exp mult_cycle
+return_cycle -> RETURN exp
+stmt -> return_cycle
+stmt_cycle -> stmt_cycle stmt SEMICOLON
+func_cycle -> func_cycle FUNCTION IDEN test SEMICOLON BEGINPARAMS decl_cycle ENDPARAMS BEGINLOCALS decl_cycle ENDLOCALS BEGINBODY stmt_cycle ENDBODY
+prog -> func_cycle

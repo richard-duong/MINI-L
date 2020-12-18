@@ -1,0 +1,306 @@
+flex mini.lex
+bison mini.yy -v -d --file-prefix=parser
+mini.yy:281.10: warning: empty rule for typed nonterminal, and no action [-Wother]
+ arr_cycle:        // epsilon { printf("arr_cycle -> epsilon\n"); }
+          ^
+mini.yy:303.11: warning: empty rule for typed nonterminal, and no action [-Wother]
+ else_cycle:       // eps  { printf("else_cycle -> epsilon\n"); }
+           ^
+mini.yy:385.12: warning: empty rule for typed nonterminal, and no action [-Wother]
+ param_cycle:      // eps { printf("param_cycle -> epsilon\n"); }
+            ^
+g++ -std=c++14 -o bin/parser parser.tab.cc lex.yy.c -lfl
+parser.tab.cc:290:1: error: expected ‘,’ or ‘;’ before ‘typedef’
+ typedef unsigned char yytype_uint8;
+ ^~~~~~~
+parser.tab.cc:544:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yytranslate[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc:664:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yydefact[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc:705:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yytable[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc:759:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yystos[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc:780:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yyr1[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc:793:14: error: ‘yytype_uint8’ does not name a type; did you mean ‘yytype_int8’?
+ static const yytype_uint8 yyr2[] =
+              ^~~~~~~~~~~~
+              yytype_int8
+parser.tab.cc: In function ‘int yyparse()’:
+parser.tab.cc:540:40: error: ‘yytranslate’ was not declared in this scope
+   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+                                        ^
+parser.tab.cc:1410:17: note: in expansion of macro ‘YYTRANSLATE’
+       yytoken = YYTRANSLATE (yychar);
+                 ^~~~~~~~~~~
+parser.tab.cc:540:40: note: suggested alternative: ‘yystate’
+   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+                                        ^
+parser.tab.cc:1410:17: note: in expansion of macro ‘YYTRANSLATE’
+       yytoken = YYTRANSLATE (yychar);
+                 ^~~~~~~~~~~
+parser.tab.cc:1419:9: error: ‘yytable’ was not declared in this scope
+   yyn = yytable[yyn];
+         ^~~~~~~
+parser.tab.cc:1419:9: note: suggested alternative: ‘mutable’
+   yyn = yytable[yyn];
+         ^~~~~~~
+         mutable
+parser.tab.cc:1451:9: error: ‘yydefact’ was not declared in this scope
+   yyn = yydefact[yystate];
+         ^~~~~~~~
+parser.tab.cc:1451:9: note: suggested alternative: ‘yydefgoto’
+   yyn = yydefact[yystate];
+         ^~~~~~~~
+         yydefgoto
+parser.tab.cc:1462:11: error: ‘yyr2’ was not declared in this scope
+   yylen = yyr2[yyn];
+           ^~~~
+parser.tab.cc:1462:11: note: suggested alternative: ‘yyn’
+   yylen = yyr2[yyn];
+           ^~~~
+           yyn
+mini.yy:142:21: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   cout << $1;
+                     ^          
+mini.yy:162:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:171:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $1.code.begin(), $1.code.end());
+          ^~~~~~~~~~~
+mini.yy:171:37: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                     ^~~~~~~~~~~
+mini.yy:171:74: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                                                          ^          
+mini.yy:171:113: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                                                                                                 ^          
+mini.yy:174:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.push_back("func " + name);
+          ^~~~~~~~~~~
+mini.yy:175:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $6.code.begin(), $6.code.end());
+          ^~~~~~~~~~~
+mini.yy:175:37: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $6.code.begin(), $6.code.end());
+                                     ^~~~~~~~~~~
+mini.yy:175:73: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $6.code.begin(), $6.code.end());
+                                                                         ^          
+mini.yy:175:111: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $6.code.begin(), $6.code.end());
+                                                                                                               ^          
+mini.yy:176:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $9.code.begin(), $9.code.end());
+          ^~~~~~~~~~~
+mini.yy:176:37: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $9.code.begin(), $9.code.end());
+                                     ^~~~~~~~~~~
+mini.yy:176:73: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $9.code.begin(), $9.code.end());
+                                                                         ^          
+mini.yy:176:111: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $9.code.begin(), $9.code.end());
+                                                                                                               ^          
+mini.yy:177:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $12.code.begin(), $12.code.end());
+          ^~~~~~~~~~~
+mini.yy:177:37: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $12.code.begin(), $12.code.end());
+                                     ^~~~~~~~~~~
+mini.yy:177:73: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $12.code.begin(), $12.code.end());
+                                                                         ^          
+mini.yy:177:111: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.insert($$.code.end(), $12.code.begin(), $12.code.end());
+                                                                                                               ^          
+mini.yy:178:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.push_back("endfunc");
+          ^~~~~~~~~~~
+mini.yy:200:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end());
+          ^~~~~~~~~~~
+mini.yy:200:42: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                          ^~~~~~~~~~~
+mini.yy:200:78: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                                                              ^          
+mini.yy:200:116: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end());
+                                                                                                                    ^          
+mini.yy:201:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $2.code.begin(), $2.code.end());
+          ^~~~~~~~~~~
+mini.yy:201:42: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $2.code.begin(), $2.code.end());
+                                          ^~~~~~~~~~~
+mini.yy:201:78: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $2.code.begin(), $2.code.end());
+                                                                              ^          
+mini.yy:201:116: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $2.code.begin(), $2.code.end());
+                                                                                                                    ^          
+mini.yy:212:29: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   for(auto item: $1.code)
+                             ^          
+mini.yy:221:13: error: too few arguments to function ‘int yyerror(const char*)’
+     yyerror();
+             ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:227:13: error: too few arguments to function ‘int yyerror(const char*)’
+     yyerror();
+             ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:231:18: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+    if($3.code.size() == 0)
+                  ^~~~~~~~~  
+mini.yy:241:53: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+     declaration += "[] " + item + ", " + $3.code[0];
+                                                     ^          
+mini.yy:243:32: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+     temp.arr_size = $3.code[0];
+                                ^          
+mini.yy:248:11: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+    $$.code.push_back(declaration);
+           ^~~~~~~~~~~
+mini.yy:259:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(name);
+          ^~~~~~~~~~~
+mini.yy:266:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin());
+          ^~~~~~~~~~~
+mini.yy:266:42: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin());
+                                          ^~~~~~~~   
+mini.yy:266:78: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin());
+                                                                              ^          
+mini.yy:270:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(name);
+          ^~~~~~~~~~~
+mini.yy:333:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end();
+          ^~~~~~~~~~~
+mini.yy:333:42: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end();
+                                          ^~~~~~~~~~~
+mini.yy:333:77: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end();
+                                                                             ^          
+mini.yy:333:114: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.insert($$.code.end(), $1.code.begin(), $1.code.end();
+                                                                                                                  ^          
+mini.yy:376:53: warning: format ‘%p’ expects a matching ‘void*’ argument [-Wformat=]
+                   | SUB term_base %prec UMINUS { printf("term -> SUB term_base \%prec UMINUS\n"); }
+                                                     ^
+mini.yy:402:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:408:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:414:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:416:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.name = name;
+          ^~~~~~~~   
+mini.yy:417:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(name);
+          ^~~~~~~~~~~
+mini.yy:428:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:443:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.name = makeVar();
+          ^~~~~~~~~~~
+mini.yy:444:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(".[] " + name + ", " + $3.name);
+          ^~~~~~~~~~~
+mini.yy:444:72: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(".[] " + name + ", " + $3.name);
+                                                                        ^          
+mini.yy:458:12: error: too few arguments to function ‘int yyerror(const char*)’
+    yyerror();
+            ^
+mini.yy:10:6: note: declared here
+  int yyerror(const char* msg){
+      ^~~~~~~
+mini.yy:473:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.name = makeVar();
+          ^~~~~~~~~~~
+mini.yy:474:10: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(".[] " + name + ", " + $3.name);
+          ^~~~~~~~~~~
+mini.yy:474:72: error: ‘YYSTYPE {aka union YYSTYPE}’ has no member named ‘nonterminal’
+   $$.code.push_back(".[] " + name + ", " + $3.name);
+                                                                        ^          
+parser.tab.cc:2040:9: error: ‘yyr1’ was not declared in this scope
+   yyn = yyr1[yyn];
+         ^~~~
+parser.tab.cc:2040:9: note: suggested alternative: ‘yyn’
+   yyn = yyr1[yyn];
+         ^~~~
+         yyn
+parser.tab.cc:540:40: error: ‘yytranslate’ was not declared in this scope
+   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+                                        ^
+parser.tab.cc:2057:43: note: in expansion of macro ‘YYTRANSLATE’
+   yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
+                                           ^~~~~~~~~~~
+parser.tab.cc:540:40: note: suggested alternative: ‘yystate’
+   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+                                        ^
+parser.tab.cc:2057:43: note: in expansion of macro ‘YYTRANSLATE’
+   yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
+                                           ^~~~~~~~~~~
+parser.tab.cc:2171:19: error: ‘yystos’ was not declared in this scope
+                   yystos[yystate], yyvsp);
+                   ^~~~~~
+parser.tab.cc:2171:19: note: suggested alternative: ‘yyss’
+                   yystos[yystate], yyvsp);
+                   ^~~~~~
+                   yyss
+parser.tab.cc:2229:19: error: ‘yystos’ was not declared in this scope
+                   yystos[*yyssp], yyvsp);
+                   ^~~~~~
+parser.tab.cc:2229:19: note: suggested alternative: ‘yyss’
+                   yystos[*yyssp], yyvsp);
+                   ^~~~~~
+                   yyss
+Makefile:18: recipe for target 'mini' failed
+make: *** [mini] Error 1
